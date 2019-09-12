@@ -9,8 +9,8 @@ var mongoose = require('mongoose'),
 var listingSchema = new Schema({
     /* Your code for a schema here */
     //Check out - https://mongoosejs.com/docs/guide.html
-    code: String,
-    name: String,
+    code: {type: String, required: true},
+    name: {type: String, required: true},
     coordinates: {
         latitude: Number,
         longitude: Number

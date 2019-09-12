@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/dmeadows8585/Fall2019_Bootcamp#readme",
   "dependencies": {
-    "mongoose": "^5.6.13"
+    "mongoose": "^5.6.13",
+    "should": "^13.2.3"
   }
 }

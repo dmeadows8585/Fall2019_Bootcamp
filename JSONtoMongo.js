@@ -25,16 +25,16 @@ mongoose.connect(config.db.uri, {useNewUrlParser: true});
 let file_read = fs.createReadStream('listings.json');
 
 
-fs.readFile('listings.json', 'utf8', (err, data) => {
+fs.readFile('listings.json', 'utf8', function (err, data) {
     try {
-        file_read.on('data', (data) => {
+        file_read.on('data', function (data) {
             //console.log(dataListings);
             let listings = JSON.parse(data);
 
             listings.entries.forEach(function (element) {
                 console.log(element);
                 let listing = new Listing(element);
-                listing.save((err)=> {
+                listing.save(function (err) {
                     if(err) throw err;
                 })
             });
