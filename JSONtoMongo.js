@@ -5,7 +5,6 @@
  */
 var fs = require('fs'),
     mongoose = require('mongoose'),
-    Schema = mongoose.Schema,
     Listing = require('./ListingSchema.js'),
     config = require('./config');
 
@@ -24,18 +23,18 @@ mongoose.connect(config.db.uri, {useNewUrlParser: true});
  */
 let file_read = fs.createReadStream('listings.json');
 
-
 fs.readFile('listings.json', 'utf8', function (err, data) {
     try {
         file_read.on('data', function (data) {
-            //console.log(dataListings);
             let listings = JSON.parse(data);
 
             listings.entries.forEach(function (element) {
                 console.log(element);
                 let listing = new Listing(element);
+
+                // Save each listing into the database
                 listing.save(function (err) {
-                    if(err) throw err;
+                    if (err) throw err;
                 })
             });
         })
