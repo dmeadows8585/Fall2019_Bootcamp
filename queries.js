@@ -33,8 +33,14 @@ var removeCable = () => {
      */
     Listing.findOneAndRemove({'code': 'CABL'}, function (err, listing) {
         if (err) throw err;
-        console.log(`\nRemoving document with the code 'CABL': `)
-        console.log(listing);
+        console.log(`\nRemoving document with the code 'CABL': `);
+        listing = JSON.stringify(listing, null, 4);
+        if (listing === null) {
+            console.log('listing has already been removed');
+            console.log(listing);
+        } else {
+            console.log(listing);
+        }
     });
 };
 var updatePhelpsLab = () => {
@@ -58,8 +64,9 @@ var retrieveAllListings = () => {
      */
 
     Listing.find({}, function (err, listing) {
-        console.log(`\nRetrieving all listings in the database:\n`)
-        console.log(JSON.stringify(listing, null, 4));
+        console.log(`\nRetrieving all listings in the database:\n`);
+        listing = JSON.stringify(listing, null, 4);
+        console.log(listing);
     });
 };
 
