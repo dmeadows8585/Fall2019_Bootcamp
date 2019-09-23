@@ -3,6 +3,9 @@
   "version": "3.0.0",
   "description": "Routing server-side requests using ExpressJS",
   "main": "server.js",
+  "scripts": {
+    "test": "mocha server/tests/listings.server.routes.test.js"
+  },
   "author": "Medhir Bhargava & Christina Gardner-McCune",
   "license": "MIT",
   "dependencies": {
