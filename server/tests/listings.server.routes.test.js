@@ -1,6 +1,6 @@
-var should = require('should'), 
-    request = require('supertest'), 
-    express = require('../config/express'), 
+var should = require('should'),
+    request = require('supertest'),
+    express = require('../config/express'),
     Listing = require('../models/listings.server.model.js');
 
 /* Global variables */
@@ -51,8 +51,8 @@ describe('Listings CRUD tests', function() {
 
   it('should be able to save a listing', function(done) {
     var listing = {
-      code: 'CEN3035', 
-      name: 'Introduction to Software Engineering', 
+      code: 'CEN3035',
+      name: 'Introduction to Software Engineering',
       address: '432 Newell Dr, Gainesville, FL 32611'
     };
     agent.post('/api/listings')
@@ -73,8 +73,8 @@ describe('Listings CRUD tests', function() {
 
   it('should be able to update a listing', function(done) {
     var updatedListing = {
-      code: 'CEN3031', 
-      name: 'Introduction to Software Engineering', 
+      code: 'CEN3031',
+      name: 'Introduction to Software Engineering',
       address: '432 Newell Dr, Gainesville, FL 32611'
     };
 
@@ -98,7 +98,7 @@ describe('Listings CRUD tests', function() {
         should.not.exist(err);
         should.exist(res);
 
-        agent.get('/api/listings/' + id) 
+        agent.get('/api/listings/' + id)
           .expect(400)
           .end(function(err, res) {
             id = undefined;
@@ -107,19 +107,19 @@ describe('Listings CRUD tests', function() {
       })
   });
 
-/*If this test fails because you haven't completed the  coordinates.server.controlelr.js file 
+/*If this test fails because you haven't completed the  coordinates.server.controlelr.js file
   use the filter feature in MongoDB Atlas to find and delete the entry
   {'code' : 'GMC'}
-  This should resolve the issue. Although the test has failed our create function still 
+  This should resolve the issue. Although the test has failed our create function still
   sends the listing to the database.
 
-  You can comment the two coordinate tests until you have completed the code the 
-  coordinates.server.controlelr.js file 
+  You can comment the two coordinate tests until you have completed the code the
+  coordinates.server.controlelr.js file
 */
   it('should be able to save a listing with coordinates', function(done) {
     var listing2 = {
-      code: 'GMC', 
-      name: 'Dr. Gardner-McCunes Office', 
+      code: 'GMC',
+      name: 'Dr. Gardner-McCunes Office',
       address: '432 Newell Dr, Gainesville, FL 32611'
     };
     agent.post('/api/listings')
@@ -144,7 +144,7 @@ describe('Listings CRUD tests', function() {
       .end(function(err, res) {
         should.not.exist(err);
         should.exist(res);
-        agent.get('/api/listings/' + id2) 
+        agent.get('/api/listings/' + id2)
           .expect(400)
           .end(function(err, res) {
             id = undefined;
@@ -158,12 +158,12 @@ describe('Listings CRUD tests', function() {
       Listing.deleteOne({_id: id}, function(err){
         if(err) throw err;
         next();
-      }); 
+      });
     }if(id2) {
       Listing.deleteOne({_id: id2}, function(err){
         if(err) throw err;
         done();
       });
     }else done();
-  }); 
+  });
 });
