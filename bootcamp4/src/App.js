@@ -3,6 +3,8 @@ import Search from './components/Search';
 import ViewBuilding from './components/ViewBuilding';
 import BuildingList from './components/BuildingList';
 import Credit from './components/Credit';
+import AddBuilding from './components/AddBuilding'
+import RemoveBuilding from './components/RemoveBuilding'
 
 class App extends React.Component {
   constructor(props) {
@@ -22,7 +24,7 @@ class App extends React.Component {
   }
 
   render() {
-    
+
     return (
       <div className="bg">
         <div className="row">
