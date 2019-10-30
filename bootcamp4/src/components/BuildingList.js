@@ -1,3 +1,6 @@
+/*
+BuildingList.js - This is a React Component that prints the building code and the name to the screen
+ */
 import React from 'react';
 
 class BuilingList extends React.Component {

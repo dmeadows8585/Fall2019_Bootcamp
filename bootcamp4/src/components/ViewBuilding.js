@@ -1,3 +1,8 @@
+/*
+ViewBuilding.js - This is a React Component that allows to view additional listing details
+for the current selected building when a user clicks on a listing
+ */
+
 import React from 'react';
 
 class ViewBuilding extends React.Component {

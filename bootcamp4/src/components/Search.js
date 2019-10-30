@@ -1,3 +1,7 @@
+/*
+Search.js - This is a React Component that filters the contents of the list based on the user's input in the textbox
+ */
+
 import React from 'react';
 
 class Search extends React.Component {

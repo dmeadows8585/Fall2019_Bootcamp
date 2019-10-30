@@ -1,3 +1,7 @@
+/*
+Data.js - A list of buildings formatted to work with React and JSX to render the contents to the browser
+ */
+
 export default [
     {
         id: 1,
