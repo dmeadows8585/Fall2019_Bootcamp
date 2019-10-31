@@ -10,7 +10,7 @@ class BuilingList extends React.Component {
 
         const buildingList = data
             .filter(listing => {
-                console.log(listing)
+                //console.log(listing)
                 // remove names that do not match current filter text
                 return listing.name.toLowerCase().indexOf(filterText.toLowerCase()) >= 0 ||
                     listing.code.toLowerCase().indexOf(filterText.toLowerCase()) >= 0

@@ -42,8 +42,13 @@ class App extends React.Component {
     }
 
     // remove listing from BuildingList
-    removeBuilding(id) {
-
+    removeUpdate(updatedList) {
+        this.setState({
+            buildingListings: updatedList,
+            //selectedBuilding: this.state.buildingListings[1]
+        });
+        console.log('PoopFish', updatedList[0])
+        this.selectedUpdate(updatedList[0].id)
     }
 
     /*
@@ -90,6 +95,11 @@ class App extends React.Component {
                         </div>
                         <div className="column2">
                             <ViewBuilding
+                                selectedBuilding={this.state.selectedBuilding}
+                                data={this.props.data}
+                            />
+                            <RemoveBuilding
+                                removeUpdate={this.removeUpdate.bind(this)}
                                 selectedBuilding={this.state.selectedBuilding}
                                 data={this.state.buildingListings}
                             />
