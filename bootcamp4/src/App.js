@@ -36,13 +36,9 @@ class App extends React.Component {
     }
 
     listingUpdate(newBuilding) {
-        console.log('HERE!!!');
         this.setState({
             buildingListings: this.state.buildingListings.concat(newBuilding)
-            // buildingListings: this.props.data
         });
-        console.log(newBuilding)
-        console.log(this.state.buildingListings)
     }
 
     // remove listing from BuildingList
