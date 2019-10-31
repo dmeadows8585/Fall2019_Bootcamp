@@ -10,10 +10,13 @@ class ViewBuilding extends React.Component {
         const {data, selectedBuilding} = this.props;
         // subtract 1 to make the id match the data index
         const listingId = selectedBuilding - 1;
-        const name = data[listingId].name;
+        const id = data[listingId].id;
         const code = data[listingId].code;
+        const name = data[listingId].name;
         let latitude = '';
         let longitude = '';
+        const address = data[listingId].address;
+
         if (data[listingId].coordinates !== undefined) {
             latitude = data[listingId].coordinates.latitude;
         }
@@ -28,17 +31,12 @@ class ViewBuilding extends React.Component {
                 <p>
                     {' '}
                     <i>Click on a code or name to view more information</i> <br/>
-                    <br/>
 
-                    {'Name: '}
-                    {name} <br/>
-                    {'Code: '}
-                    {code} <br/>
-                    {'Latitude: '}
-                    {latitude} <br/>
-                    {'Longitude: '}
-                    {longitude} <br/>
-
+                    <h3>{'Code: '} {code}</h3>
+                    <h3>{'Name: '} {name}</h3>
+                    <h3>{'Latitude: '} {latitude} </h3>
+                    <h3>{'Longitude: '} {longitude} </h3>
+                    <h3>{'Address: '} {address} </h3>
                 </p>
             </div>
         );
