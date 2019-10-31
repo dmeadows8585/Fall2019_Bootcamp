@@ -17,6 +17,7 @@ class AddBuilding extends React.Component {
     }
 
     addBuilding(event) {
+        const {data} = this.props;
         event.preventDefault();
 
         if (this.name.value !== "") {
@@ -34,7 +35,10 @@ class AddBuilding extends React.Component {
             };
         }
 
-        this.props.listingUpdate(newBuilding);
+
+        this.props.addUpdate(data.concat(newBuilding));
+
+        event.target.reset();
 
     }
 

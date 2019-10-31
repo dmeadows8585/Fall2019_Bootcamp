@@ -8,21 +8,44 @@ import React from 'react';
 class ViewBuilding extends React.Component {
     render() {
         const {data, selectedBuilding} = this.props;
+        let building;
+        data.filter(listing => {
+            if (listing.id === selectedBuilding) {
+                building = listing;
+            }
+        });
+        console.log('building: ',building)
+
+
         // subtract 1 to make the id match the data index
         const listingId = selectedBuilding - 1;
-        const id = data[listingId].id;
-        const code = data[listingId].code;
-        const name = data[listingId].name;
+        const id = building.id;
+        const code = building.code;
+        const name = building.name;
+        // const id = data[listingId].id;
+        // const code = data[listingId].code;
+        // const name = data[listingId].name;
         let latitude = '';
         let longitude = '';
-        const address = data[listingId].address;
+        const address = building.address;
+        console.log('code: ',building.code)
+        console.log('id: ',building.id)
 
-        if (data[listingId].coordinates !== undefined) {
-            latitude = data[listingId].coordinates.latitude;
+
+
+        if (building.coordinates !== undefined) {
+            latitude = building.coordinates.latitude;
         }
-        if (data[listingId].coordinates !== undefined) {
-            longitude = data[listingId].coordinates.longitude;
+        if (building.coordinates !== undefined) {
+            longitude = building.coordinates.longitude;
         }
+        //
+        // if (data[listingId].coordinates !== undefined) {
+        //     latitude = data[listingId].coordinates.latitude;
+        // }
+        // if (data[listingId].coordinates !== undefined) {
+        //     longitude = data[listingId].coordinates.longitude;
+        // }
 
 
         console.log(name);

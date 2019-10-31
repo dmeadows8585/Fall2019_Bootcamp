@@ -13,25 +13,15 @@ class RemoveBuilding extends React.Component {
     }
 
     removeBuilding(event) {
+
         const {selectedBuilding, data, removeUpdate} = this.props;
         event.preventDefault();
         let newBuildingList=[];
         let buildingList = data.filter((listing) => {
             return listing.id !== selectedBuilding;
-        })
-            // .filter(listing => {
-            //     console.log('hello there: ',listing.id);
-            //     console.log('selected Building: ', selectedBuilding)
-            //     // remove names that do not match current filter text
-            //     return listing.id.indexOf(selectedBuilding) >= 0})
-            // .map(directory => {
-            //     return (
-            //         console.log('directory: ',directory)
-            //     );
-            // });
-        // buildingList.splice(selectedBuilding);
+        });
 
-        this.props.removeUpdate(buildingList);
+        removeUpdate(buildingList);
 
     }
 

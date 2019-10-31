@@ -35,19 +35,20 @@ class App extends React.Component {
         })
     }
 
-    listingUpdate(newBuilding) {
+    addUpdate(updatedList) {
         this.setState({
-            buildingListings: this.state.buildingListings.concat(newBuilding)
+            // buildingListings: this.state.buildingListings.concat(newBuilding)
+            buildingListings: updatedList,
         });
+        this.selectedUpdate(updatedList[0].id)
+
     }
 
     // remove listing from BuildingList
     removeUpdate(updatedList) {
         this.setState({
             buildingListings: updatedList,
-            //selectedBuilding: this.state.buildingListings[1]
         });
-        console.log('PoopFish', updatedList[0])
         this.selectedUpdate(updatedList[0].id)
     }
 
@@ -56,7 +57,7 @@ class App extends React.Component {
      */
     selectedUpdate(id) {
         //update the selectedBuilding property of state to the id passed into this function
-        console.log('id to selected update: ', id)
+        console.log('id to selected update: ', id);
         this.setState({
             selectedBuilding: id
         })
@@ -97,6 +98,8 @@ class App extends React.Component {
                             <ViewBuilding
                                 selectedBuilding={this.state.selectedBuilding}
                                 data={this.props.data}
+                                data={this.state.buildingListings}
+
                             />
                             <RemoveBuilding
                                 removeUpdate={this.removeUpdate.bind(this)}
@@ -104,7 +107,7 @@ class App extends React.Component {
                                 data={this.state.buildingListings}
                             />
                             <AddBuilding
-                                listingUpdate={this.listingUpdate.bind(this)}
+                                addUpdate={this.addUpdate.bind(this)}
                                 data={this.state.buildingListings}
                             />
                         </div>
