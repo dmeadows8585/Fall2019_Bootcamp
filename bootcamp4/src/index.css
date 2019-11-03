@@ -52,11 +52,18 @@ td:hover {
 	float: left;
 	width: 50%;
 	padding: 10px;
+
 }
 
 .column2 {
 	float: left;
 	width: 50%;
+	padding: 10px;
+}
+
+.viewBox {
+	float: left;
+	width: 100%;
 	padding: 20px;
 	background-color: #ccdef9;
 }

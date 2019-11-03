@@ -4,6 +4,8 @@ for the current selected building when a user clicks on a listing
  */
 
 import React from 'react';
+import {Table, ControlLabel} from "react-bootstrap";
+
 
 class ViewBuilding extends React.Component {
     render() {
@@ -14,23 +16,14 @@ class ViewBuilding extends React.Component {
                 building = listing;
             }
         });
-        console.log('building: ',building)
 
-
-        // subtract 1 to make the id match the data index
-        const listingId = selectedBuilding - 1;
-        const id = building.id;
         const code = building.code;
         const name = building.name;
-        // const id = data[listingId].id;
-        // const code = data[listingId].code;
-        // const name = data[listingId].name;
+        const address = building.address;
         let latitude = '';
         let longitude = '';
-        const address = building.address;
-        console.log('code: ',building.code)
-        console.log('id: ',building.id)
-
+        console.log('code: ', building.code);
+        console.log('id: ', building.id);
 
 
         if (building.coordinates !== undefined) {
@@ -39,28 +32,34 @@ class ViewBuilding extends React.Component {
         if (building.coordinates !== undefined) {
             longitude = building.coordinates.longitude;
         }
-        //
-        // if (data[listingId].coordinates !== undefined) {
-        //     latitude = data[listingId].coordinates.latitude;
-        // }
-        // if (data[listingId].coordinates !== undefined) {
-        //     longitude = data[listingId].coordinates.longitude;
-        // }
-
 
         console.log(name);
         return (
             <div>
-                <p>
-                    {' '}
-                    <i>Click on a code or name to view more information</i> <br/>
-
-                    <h3>{'Code: '} {code}</h3>
-                    <h3>{'Name: '} {name}</h3>
-                    <h3>{'Latitude: '} {latitude} </h3>
-                    <h3>{'Longitude: '} {longitude} </h3>
-                    <h3>{'Address: '} {address} </h3>
-                </p>
+                <Table striped bordered hover>
+                    <tbody>
+                    <tr>
+                        <td>Code</td>
+                        <td>{code}</td>
+                    </tr>
+                    <tr>
+                        <td>Name</td>
+                        <td>{name}</td>
+                    </tr>
+                    <tr>
+                        <td>Latitude</td>
+                        <td>{latitude}</td>
+                    </tr>
+                    <tr>
+                        <td>Longitude</td>
+                        <td>{longitude}</td>
+                    </tr>
+                    <tr>
+                        <td>Address</td>
+                        <td>{address}</td>
+                    </tr>
+                    </tbody>
+                </Table>
             </div>
         );
     }

@@ -14,6 +14,8 @@ import BuildingList from './components/BuildingList';
 import Credit from './components/Credit';
 import AddBuilding from './components/AddBuilding';
 import RemoveBuilding from './components/RemoveBuilding';
+import {Card, Button} from "react-bootstrap";
+
 
 class App extends React.Component {
     constructor(props) {
@@ -35,6 +37,9 @@ class App extends React.Component {
         })
     }
 
+    /*
+    Add listing to BuildingList
+    */
     addUpdate(updatedList) {
         this.setState({
             // buildingListings: this.state.buildingListings.concat(newBuilding)
@@ -44,7 +49,9 @@ class App extends React.Component {
 
     }
 
-    // remove listing from BuildingList
+    /*
+    Remove listing from BuildingList
+     */
     removeUpdate(updatedList) {
         this.setState({
             buildingListings: updatedList,
@@ -57,18 +64,23 @@ class App extends React.Component {
      */
     selectedUpdate(id) {
         //update the selectedBuilding property of state to the id passed into this function
-        console.log('id to selected update: ', id);
         this.setState({
             selectedBuilding: id
         })
     }
 
     render() {
-
         return (
             <div className="bg">
                 <div className="row">
-                    <h1>UF Directory App</h1>
+                    <Card bg="primary" border="secondary" text="white" style={{width: '180rem'}}>
+                        <Card.Body>
+                            <Card.Title><h1>UF Directory App</h1></Card.Title>
+                            <Card.Text>
+                                Below is a list of building locations at the University of Florida.
+                            </Card.Text>
+                        </Card.Body>
+                    </Card>
                 </div>
 
                 <Search
@@ -76,10 +88,12 @@ class App extends React.Component {
                     filterUpdate={this.filterUpdate.bind(this)}
                 />
                 <main>
-                    <div className="row">
-                        <div className="column1">
+
+                    <div class="container">
+                        <div class="column1">
                             <div className="tableWrapper">
                                 <table className="table table-striped table-hover">
+                                    <i>Click on a code or name to view more information</i> <br/>
 
                                     <tr>
                                         <td>
@@ -94,27 +108,34 @@ class App extends React.Component {
                                 </table>
                             </div>
                         </div>
-                        <div className="column2">
-                            <ViewBuilding
-                                selectedBuilding={this.state.selectedBuilding}
-                                data={this.props.data}
-                                data={this.state.buildingListings}
+                        <div class="column2">
+                            <div class="row">
 
-                            />
-                            <RemoveBuilding
-                                removeUpdate={this.removeUpdate.bind(this)}
-                                selectedBuilding={this.state.selectedBuilding}
-                                data={this.state.buildingListings}
-                            />
-                            <AddBuilding
-                                addUpdate={this.addUpdate.bind(this)}
-                                data={this.state.buildingListings}
-                            />
+                                <ViewBuilding
+                                    selectedBuilding={this.state.selectedBuilding}
+                                    data={this.props.data}
+                                    data={this.state.buildingListings}
+
+                                />
+                            </div>
+                            <div class="row">
+                                <RemoveBuilding
+                                    removeUpdate={this.removeUpdate.bind(this)}
+                                    selectedBuilding={this.state.selectedBuilding}
+                                    data={this.state.buildingListings}
+                                />
+                            </div>
+                            <div class="row">
+                                <div className="col">
+                                    <AddBuilding
+                                        addUpdate={this.addUpdate.bind(this)}
+                                        data={this.state.buildingListings}
+                                    />
+                                </div>
+                            </div>
                         </div>
+                        <Credit/>
                     </div>
-
-
-                    <Credit/>
                 </main>
             </div>
         );

@@ -12,8 +12,8 @@ class Search extends React.Component {
     }
 
     render() {
-        //You will need to save the value from the textbox and update it as it changes
-        //You will need the onChange value for the input tag to capture the textbox value
+        //save the value from the textbox and update it as it changes
+        //the onChange value is needed for the input tag to capture the textbox value
         return (
             <form>
                 <input
@@ -23,7 +23,6 @@ class Search extends React.Component {
                     }}
                     placeholder="Type to Filter"
                     onChange={this.filterUpdate.bind(this)}
-
                 />
             </form>
         );

@@ -3,6 +3,8 @@ Add a building to the listings
  */
 
 import React from 'react'
+import {Form, FormControl, ControlLabel} from "react-bootstrap";
+
 
 class AddBuilding extends React.Component {
 
@@ -13,14 +15,15 @@ class AddBuilding extends React.Component {
             buildings: this.props.data
         };
 
-        this.addBuilding = this.addBuilding.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    addBuilding(event) {
+    handleSubmit(event) {
+
         const {data} = this.props;
         event.preventDefault();
 
-        if (this.name.value !== "") {
+        if (this.name.value !== "" && this.code.value !== "") {
             var newId = this.props.data.length + 1; //get the id of the last element and increment it.
             console.log('new id: ', newId);
             var newBuilding = {
@@ -33,73 +36,71 @@ class AddBuilding extends React.Component {
                     longitude: this.longitude.value
                 }
             };
+
+            this.props.addUpdate(data.concat(newBuilding));
+
+            alert("Building has been added!");
+            event.target.reset();
+        } else {
+            alert("Name and Code fields must be filled out");
         }
 
+    }
 
-        this.props.addUpdate(data.concat(newBuilding));
-
-        event.target.reset();
-
+    handleClearForm(event) {
+        event.preventDefault();
+        this.setState({})
     }
 
     render() {
         return (
             <div className="addBuildMain">
                 <div className="header">
-                    <form onSubmit={this.addBuilding}>
-                        <label>
-                            name:
-                            <input
-                                type="text"
-                                ref={(value) => {
-                                    this.name = value
-                                }}
-                                // onChange={this.handleChange}
+                    <b>Add Building </b>
+
+                    <Form onSubmit={this.handleSubmit}>
+                        <Form.Group controlId="formBasicName">
+                            <Form.Label>Name</Form.Label>
+                            <Form.Control size="sm" type="text" placeholder="Enter building Name"
+                                          ref={(value) => {
+                                              this.name = value
+                                          }}
                             />
-                        </label>
-                        <label>
-                            code:
-                            <input
-                                type="text"
-                                ref={(value) => {
-                                    this.code = value
-                                }}
-                                // onChange={this.handleChange}
+                        </Form.Group>
+                        <Form.Group controlId="formBasicCode">
+                            <Form.Label>Code</Form.Label>
+                            <Form.Control size="sm" type="text" placeholder="Enter building Code"
+                                          ref={(value) => {
+                                              this.code = value
+                                          }}
                             />
-                        </label>
-                        <label>
-                            address:
-                            <input
-                                type="text"
-                                ref={(value) => {
-                                    this.address = value
-                                }}
-                                // onChange={this.handleChange}
+                        </Form.Group>
+                        <Form.Group controlId="formBasicAddress">
+                            <Form.Label>Address</Form.Label>
+                            <Form.Control type="text" placeholder="Enter building Address"
+                                          ref={(value) => {
+                                              this.address = value
+                                          }}
                             />
-                        </label>
-                        <label>
-                            latitude:
-                            <input
-                                type="text"
-                                ref={(value) => {
-                                    this.latitude = value
-                                }}
-                                // onChange={this.handleChange}
+                        </Form.Group>
+                        <Form.Group controlId="formBasicAddress">
+                            <Form.Label>Latitude</Form.Label>
+                            <Form.Control type="text" placeholder="Enter building Latitude"
+                                          ref={(value) => {
+                                              this.latitude = value
+                                          }}
                             />
-                        </label>
-                        <label>
-                            longitude:
-                            <input
-                                type="text"
-                                ref={(value) => {
-                                    this.longitude = value
-                                }}
-                                // onChange={this.handleChange}
+                        </Form.Group>
+                        <Form.Group controlId="formBasicAddress">
+                            <Form.Label>Longitude</Form.Label>
+                            <Form.Control type="text" placeholder="Enter building Longitude"
+                                          ref={(value) => {
+                                              this.longitude = value
+                                          }}
                             />
-                        </label>
-                        {/*<input type="submit" value="add"/>*/}
-                        <button type="submit">add</button>
-                    </form>
+                        </Form.Group>
+                        <button type="submit">Submit</button>
+                    </Form>
                 </div>
             </div>
         );
